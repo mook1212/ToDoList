@@ -9,16 +9,19 @@ function Main() {
     let navigate = useNavigate();
 
     return (
-        <div>
+        <div className={cs("back")}>
             <div className={cs("main")}>
-                <h1>나만의 일정 To Do List</h1>
+                <h1>나만의 일정 My Diary</h1>
+                <div className={cs("main-img")}>
+                    <img src={process.env.PUBLIC_URL + `/img/book0.png`}/>
+                </div>
                 <button onClick={ ()=> {
                     navigate('/todo')
-                }}>시작하기</button>
+                }}>기록하기</button>
 
-                <button onClick={ ()=> {
+                {/* <button onClick={ ()=> {
                     navigate('/login')
-                }}>로그인</button>
+                }}>로그인</button> */}
 
             </div>
 

@@ -33,34 +33,9 @@ function Todo() {
     let [DBdate, setDBDate] = useState([]) // DB에 있는 모든 title 데이터 
 
 
-    // DB에 일정 데이터 조회
-
-
-    // useEffect(() => {
-    //     axios.get('https://todo-project-366420.du.r.appspot.com/list-confirm')
-
-    //         .then(res => {
-
-    //             // 현재 날짜와 맞는 title 데이터 조회
-    //             const DBfilter = res.data.filter((data) => {
-    //                 return data.title === moment(value).format("YYYY년 MM월 DD일")
-    //             })
-    //             let list = DBfilter.map(a => a.name)
-    //             setFilter(DBfilter)
-
-    //             let day = res.data.map(a => a.title);
-    //             setDBDate(day)
-
-    //         })
-
-    //         .catch(() => {
-    //             console.log("실패");
-    //         });
-
-    // }, [moment(value).format("YYYY년 MM월 DD일"), block, re])
 
     useEffect(() => {
-        axios.post('https://todo-project-366420.du.r.appspot.com/list-confirm', {
+        axios.post('http://localhost:8080/list-confirm', {
             local_id : token
         })
 
@@ -91,7 +66,7 @@ function Todo() {
     function list_add() {
         let val = document.getElementById('add-input').value
         let id = filter.map(a => a.name)
-        axios.post('https://todo-project-366420.du.r.appspot.com/todolist', {
+        axios.post('http://localhost:8080/todolist', {
             local_id : token,
             title: moment(value).format("YYYY년 MM월 DD일"),
             name: val
@@ -110,7 +85,7 @@ function Todo() {
     // 일정 삭제
     function list_delete(i) {
         let id = filter[i]._id
-        axios.delete('https://todo-project-366420.du.r.appspot.com/list-delete', {
+        axios.delete('http://localhost:8080/list-delete', {
             local_id : token,
             data: { _id: id }
         })
@@ -130,7 +105,7 @@ function Todo() {
         let memobox = 'memo' + i
         let memo = document.getElementById(memobox).value
 
-        axios.put('https://todo-project-366420.du.r.appspot.com/list-update', {
+        axios.put('http://localhost:8080/list-update', {
             local_id : token,
             id: id,
             memo: memo
@@ -139,7 +114,7 @@ function Todo() {
                 console.log(res);
                 console.log(res.data);
                 setRe(re + 1)
-                axios.post('https://todo-project-366420.du.r.appspot.com/list-confirm', {
+                axios.post('http://localhost:8080/list-confirm', {
                     local_id : token
                 })
 
