@@ -280,7 +280,7 @@ i {
     left: 50%;
 
     width: 400px;
-    height: 500px;
+    height: 450px;
 
     /* text-align: center; */
     /* color: white; */
@@ -296,15 +296,26 @@ i {
     height: 60%;
     margin-top: 30px;
 }
-.text-modal p {
+.list-name {
+    margin-top: 10px;
     font-size: 25px;
+    font-weight: bold;
     text-align: center;
+    color:  rgba(0, 0, 255, 0.61);
 }
-.text-modal input{
+/* .text-modal input{
     width: 30%;
     margin: 10px 0px;
     margin-left: 5%;
-    height: 40px;
+} */
+.text-header {
+    display: flex;
+    margin-left: 5%;
+    margin-bottom: 20px;
+}
+.text-header p {
+    margin-right: 8px;
+    font-weight: bold;
 }
 .text-modal textarea {
     width: 90%;
@@ -314,7 +325,17 @@ i {
 .text-btn {
     margin-top: 20px;
     margin-left: auto;
-    margin-right: 5%;
+}
+.text-btn button {
+    background-color: rgba(0, 0, 255, 0.61);
+    border: none;
+    width: 100px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
 }
 
 @keyframes fadeInDown {

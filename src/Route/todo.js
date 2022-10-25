@@ -34,9 +34,10 @@ function Todo() {
 
 
 
+    // 나의 일정 조회
     useEffect(() => {
         axios.post('http://localhost:8080/list-confirm', {
-            local_id : token
+            local_id: token
         })
 
             .then(res => {
@@ -67,7 +68,7 @@ function Todo() {
         let val = document.getElementById('add-input').value
         let id = filter.map(a => a.name)
         axios.post('http://localhost:8080/todolist', {
-            local_id : token,
+            local_id: token,
             title: moment(value).format("YYYY년 MM월 DD일"),
             name: val
         })
@@ -86,7 +87,7 @@ function Todo() {
     function list_delete(i) {
         let id = filter[i]._id
         axios.delete('http://localhost:8080/list-delete', {
-            local_id : token,
+            local_id: token,
             data: { _id: id }
         })
             .then(function (res) {
@@ -106,7 +107,7 @@ function Todo() {
         let memo = document.getElementById(memobox).value
 
         axios.put('http://localhost:8080/list-update', {
-            local_id : token,
+            local_id: token,
             id: id,
             memo: memo
         })
@@ -115,7 +116,7 @@ function Todo() {
                 console.log(res.data);
                 setRe(re + 1)
                 axios.post('http://localhost:8080/list-confirm', {
-                    local_id : token
+                    local_id: token
                 })
 
                     .then(res => {
@@ -198,9 +199,12 @@ function Todo() {
 
                                                 <div className={cs(`text-container${i}`, 'text-container')}>
                                                     <div className={cs("text-modal")}>
-                                                        <p>{list_name}</p>
+                                                        <p className={cs("list-name")}>{list_name}</p>
                                                         <div className={cs("text-box")}>
-                                                            <input id={text_input_id} type='text' />
+                                                            <div className={cs("text-header")}>
+                                                                <p>제목 : </p>
+                                                                <input id={text_input_id} type='text' />
+                                                            </div>
                                                             <textarea id={memobox} placeholder='내용을 입력 해주세요.'></textarea>
                                                         </div>
 
