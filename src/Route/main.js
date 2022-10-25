@@ -8,6 +8,8 @@ const cs = classNames.bind(style);
 function Main() {
     let navigate = useNavigate();
 
+    let token = localStorage.getItem('token')
+
     return (
         <div className={cs("back")}>
             <div className={cs("main")}>
@@ -16,7 +18,11 @@ function Main() {
                     <img src={process.env.PUBLIC_URL + `/img/book0.png`}/>
                 </div>
                 <button onClick={ ()=> {
-                    navigate('/todo')
+                    if(token != null) {
+                        navigate('/todo')
+                    } else {
+                        navigate('/login')
+                    }
                 }}>기록하기</button>
 
                 {/* <button onClick={ ()=> {

@@ -1,3 +1,6 @@
+button {
+    cursor: pointer;
+}
 .sign-up {
     display: flex;
     flex-direction: column;

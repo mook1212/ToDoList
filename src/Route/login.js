@@ -63,22 +63,26 @@ function Login() {
     // 아이디 중복검사
     function double_check() {
         let id = document.getElementById('sign-up-id').value // 회원가입 폼 ID칸에 작성한 ID값
-        axios.post('http://localhost:8080/double-check', {
-            id: id
-        })
-
-            .then(function (res) {
-
-                if (res.data == true) {
-                    document.getElementById('sign-up-id').style.borderColor = 'green'
-                    Swal.fire('사용 가능한 아이디 입니다.')
-                } else {
-                    document.getElementById('sign-up-id').style.borderColor = 'red'
-                    Swal.fire('이미 사용중인 아이디 입니다.')
-                }
-                setId_double(res.data)
-
+        if (ID_check == true) {
+            axios.post('http://localhost:8080/double-check', {
+                id: id
             })
+
+                .then(function (res) {
+
+                    if (res.data == true) {
+                        document.getElementById('sign-up-id').style.borderColor = 'green'
+                        Swal.fire('사용 가능한 아이디 입니다.')
+                    } else {
+                        document.getElementById('sign-up-id').style.borderColor = 'red'
+                        Swal.fire('이미 사용중인 아이디 입니다.')
+                    }
+                    setId_double(res.data)
+
+                })
+        } else {
+            Swal.fire('아이디를 다시 한번 확인해주세요.')
+        }
     }
 
 
@@ -194,7 +198,6 @@ function Login() {
                             <i class="fa-solid fa-lock"></i>
                             <input id="sign-in-pw" type='password' name="pw" placeholder="비밀번호를 입력해 주세요." />
                         </div>
-                        <button type="submit">버튼</button>
 
                         <div className={cs("sign")}>
                             <button onClick={sign_in}>로그인</button>
